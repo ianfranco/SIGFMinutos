@@ -43,15 +43,21 @@
             <Property name="text" type="java.lang.String" value="Informes"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
+            <MenuItem class="javax.swing.JMenuItem" name="minutosRecaudarMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Minutos x Recaudar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="minutosRecaudarMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
+            <MenuItem class="javax.swing.JMenuItem" name="minutosFechaMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Minutos x Dia"/>
+                <Property name="text" type="java.lang.String" value="Minutos x Fecha"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="minutosFechaMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
               <Properties>
@@ -77,6 +83,14 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Minutos x Mes"/>
               </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="crossTabMinutosMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Crosstab Minutos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crossTabMinutosMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

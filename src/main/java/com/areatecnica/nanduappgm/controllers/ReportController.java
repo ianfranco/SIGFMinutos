@@ -26,68 +26,80 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author ianfrancoconcha
  */
 public class ReportController {
-    
+
     private JasperReport report;
-    private JasperPrint jasperPrint; 
-    private String path; 
+    private JasperPrint jasperPrint;
+    private String path;
     private String title;
-    private InputStream file; 
+    private InputStream file;
     private JTabbedPane panel;
-    private Map map; 
-    private Boolean flag;
+    private Map map;
+    private Boolean flag = Boolean.TRUE;
 
     public ReportController() {
     }
-    
-    public ReportController(InputStream file){
-        this.file = file; 
+
+    public ReportController(InputStream file) {
+        this.file = file;
     }
-    
+
     public ReportController(String path) {
-        this.path = path; 
+        this.path = path;
     }
 
     public ReportController(JTabbedPane panel, String path) {
-        this.path = path; 
+        this.path = path;
         this.panel = panel;
         load();
     }
-    
-    public ReportController(JTabbedPane panel, String path, Map map) {
-        this.path = path; 
+
+    public ReportController(JTabbedPane panel, InputStream file, Map map, String title) {
+        this.file = file;
         this.panel = panel;
-        this.map = map; 
-        load();
+        this.map = map;
+        this.title = title;
+        //loadFile();
     }
-    
-    
-    public void load(){
+
+    public void load() {
         try {
             this.report = JasperCompileManager.compileReport(this.path);
-            
+
             this.jasperPrint = JasperFillManager.fillReport(report, map, new Conexion().getConnection());
-            
-            if(flag){
-                this.panel.add(new JRViewer(jasperPrint), title);
-            }else{
+
+            if (flag) {
+                JRViewer jr = new JRViewer(jasperPrint);
+                this.panel.add(jr, title);
+                this.panel.setSelectedComponent(jr);
+
+            } else {
                 JasperPrintManager.printReport(jasperPrint, false);
             }
-            
-            
+
         } catch (JRException ex) {
             Logger.getLogger(ReportController.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "No se ha encontrado la ruta del informe", "Error al generar la petición", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    public void loadFile(){
+
+    public void loadFile() {
         try {
             this.report = JasperCompileManager.compileReport(this.file);
-            
+
             this.jasperPrint = JasperFillManager.fillReport(report, map, new Conexion().getConnection());
-            
-            JasperViewer.viewReport(jasperPrint, false);
-            
+
+            if (flag) {
+                if (this.panel != null) {
+                    JRViewer jr = new JRViewer(jasperPrint);
+                    this.panel.add(jr, title);
+                    this.panel.setSelectedComponent(jr);
+                } else {
+                    JasperViewer.viewReport(jasperPrint, false);
+                }
+            } else {
+                JasperViewer.viewReport(jasperPrint, true);
+            }
+
         } catch (JRException ex) {
             Logger.getLogger(ReportController.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "No se ha encontrado la ruta del informe", "Error al generar la petición", JOptionPane.ERROR_MESSAGE);
@@ -97,6 +109,5 @@ public class ReportController {
     public void setMap(Map map) {
         this.map = map;
     }
-    
-        
+
 }

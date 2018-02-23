@@ -5,6 +5,9 @@
  */
 package com.areatecnica.nanduappgm.views;
 
+import com.areatecnica.nanduappgm.controllers.InformeCrosstabController;
+import com.areatecnica.nanduappgm.controllers.InformeMinutosFechaController;
+import com.areatecnica.nanduappgm.controllers.InformeMinutosPendientesPagarController;
 import com.areatecnica.nanduappgm.controllers.RegistroMinutoController;
 import com.areatecnica.nanduappgm.helpers.SystemTrayIcon;
 import java.util.logging.Level;
@@ -47,13 +50,14 @@ public class MDIApplicationMain extends javax.swing.JFrame {
         actionMenu = new javax.swing.JMenu();
         registroMinutosMenuItem = new javax.swing.JMenuItem();
         repotMenu = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        minutosRecaudarMenuItem = new javax.swing.JMenuItem();
+        minutosFechaMenuItem = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        crossTabMinutosMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -93,11 +97,21 @@ public class MDIApplicationMain extends javax.swing.JFrame {
 
         repotMenu.setText("Informes");
 
-        jMenuItem7.setText("Minutos x Recaudar");
-        repotMenu.add(jMenuItem7);
+        minutosRecaudarMenuItem.setText("Minutos x Recaudar");
+        minutosRecaudarMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minutosRecaudarMenuItemActionPerformed(evt);
+            }
+        });
+        repotMenu.add(minutosRecaudarMenuItem);
 
-        jMenuItem8.setText("Minutos x Dia");
-        repotMenu.add(jMenuItem8);
+        minutosFechaMenuItem.setText("Minutos x Fecha");
+        minutosFechaMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minutosFechaMenuItemActionPerformed(evt);
+            }
+        });
+        repotMenu.add(minutosFechaMenuItem);
 
         jMenuItem9.setText("Minutos Pagados x Flota");
         repotMenu.add(jMenuItem9);
@@ -113,6 +127,14 @@ public class MDIApplicationMain extends javax.swing.JFrame {
 
         jMenuItem6.setText("Minutos x Mes");
         repotMenu.add(jMenuItem6);
+
+        crossTabMinutosMenuItem.setText("Crosstab Minutos");
+        crossTabMinutosMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crossTabMinutosMenuItemActionPerformed(evt);
+            }
+        });
+        repotMenu.add(crossTabMinutosMenuItem);
 
         menuBar.add(repotMenu);
 
@@ -159,6 +181,24 @@ public class MDIApplicationMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_registroMinutosMenuItemActionPerformed
 
+    private void crossTabMinutosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crossTabMinutosMenuItemActionPerformed
+        reporteMes = new ReporteMesView();
+        InformeCrosstabController controller = new InformeCrosstabController(reporteMes);
+        setNewTab(reporteMes, "Crostab Minutos/Mes");
+    }//GEN-LAST:event_crossTabMinutosMenuItemActionPerformed
+
+    private void minutosRecaudarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minutosRecaudarMenuItemActionPerformed
+        reporteMes = new ReporteMesView();
+        InformeMinutosPendientesPagarController controller = new InformeMinutosPendientesPagarController(reporteMes); 
+        setNewTab(reporteMes, "Minutos x Recaudar");
+    }//GEN-LAST:event_minutosRecaudarMenuItemActionPerformed
+
+    private void minutosFechaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minutosFechaMenuItemActionPerformed
+        reporteFecha = new ReporteFechaView();
+        InformeMinutosFechaController controller = new InformeMinutosFechaController(reporteFecha);
+        setNewTab(reporteFecha, "Minutos x Fecha");
+    }//GEN-LAST:event_minutosFechaMenuItemActionPerformed
+
     private void setNewTab(JPanel panel, String title) {
         this.tabbedPane.add(title, panel);
         this.tabbedPane.setSelectedComponent(panel);
@@ -200,6 +240,7 @@ public class MDIApplicationMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenu actionMenu;
     private javax.swing.JMenuItem contentMenuItem;
+    private javax.swing.JMenuItem crossTabMinutosMenuItem;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
@@ -207,15 +248,17 @@ public class MDIApplicationMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem minutosFechaMenuItem;
+    private javax.swing.JMenuItem minutosRecaudarMenuItem;
     private javax.swing.JMenuItem registroMinutosMenuItem;
     private javax.swing.JMenu repotMenu;
     private javax.swing.JTabbedPane tabbedPane;
     // End of variables declaration//GEN-END:variables
     private final SystemTrayIcon icon;
     private static RegistroMinutoView minutoView;
+    private ReporteMesView reporteMes;
+    private ReporteFechaView reporteFecha;
 
 }

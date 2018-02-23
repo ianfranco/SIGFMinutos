@@ -22,6 +22,7 @@ public class CurrentDate {
     private int month;
     private int year;
     private int day;
+    private static SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
     public CurrentDate(int day, int month, int year) {
         this.day = day;
@@ -29,8 +30,6 @@ public class CurrentDate {
         this.year = year;
 
         this.calendar = Calendar.getInstance();
-
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
         String from = day + "/" + month + "/" + year;
         try {
@@ -47,11 +46,11 @@ public class CurrentDate {
     }
 
     public void setDate(Date date) {
-        this.calendar.setTime(date);
+        this.date = date;
     }
 
     public Date date() {
-        return calendar.getTime();
+        return date;
     }
 
     public Date getMaxDate() {
@@ -82,6 +81,43 @@ public class CurrentDate {
 
     public String format(Date toFormat) {
         return sdf.format(toFormat);
+    }
+
+    public String getStringMonthYear() {
+        switch (this.month) {
+            case 1:
+                return "Enero " + this.year;
+            case 2:
+                return "Febrero " + this.year;
+            case 3:
+                return "Marzo " + this.year;
+            case 4:
+                return "Abril " + this.year;
+            case 5:
+                return "Mayo " + this.year;
+            case 6:
+                return "Junio " + this.year;
+            case 7:
+                return "Julio " + this.year;
+            case 8:
+                return "Agosto " + this.year;
+            case 9:
+                return "Septiembre " + this.year;
+            case 10:
+                return "Octubre " + this.year;
+            case 11:
+                return "Noviembre " + this.year;
+            case 12:
+                return "Diciembre " + this.year;
+
+        }
+
+        return "SIN VALOR FECHA REGISTRADO";
+    }
+
+    @Override
+    public String toString() {
+        return format.format(date);
     }
 
 }
