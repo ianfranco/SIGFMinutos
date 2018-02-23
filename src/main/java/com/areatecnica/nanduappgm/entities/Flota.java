@@ -158,7 +158,7 @@ public class Flota implements Serializable {
 
     @Override
     public String toString() {
-        return "com.areatecnica.nanduappgm.entities.Flota[ flotaId=" + flotaId + " ]";
+        return flotaNombre;
     }
     
 }

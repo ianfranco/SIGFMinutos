@@ -6,6 +6,9 @@
 	<parameter name="fecha" class="java.util.Date">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="flota" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT 
     b.bus_numero AS numeroPaga,
@@ -14,7 +17,7 @@
     c.bus_numero AS numeroRecibe,
     c.bus_patente AS patenteRecibe,
     f2.flota_nombre AS flotaRecibe, 
-    r.registro_minuto_monto
+    SUM(r.registro_minuto_monto) AS registro_minuto_monto
 FROM
     registro_minuto r
         LEFT JOIN
@@ -26,7 +29,7 @@ FROM
 		LEFT JOIN 
 	flota f2 ON c.bus_id_flota = f2.flota_id 
 WHERE
-    r.registro_minuto_fecha_minuto = $P{fecha} ORDER BY numeroPaga ASC]]>
+    r.registro_minuto_fecha_minuto = $P{fecha} AND b.bus_id_flota = $P{flota} GROUP BY b.bus_numero, b.bus_patente ORDER BY numeroPaga ASC]]>
 	</queryString>
 	<field name="numeroPaga" class="java.lang.Long"/>
 	<field name="patentePaga" class="java.lang.String"/>

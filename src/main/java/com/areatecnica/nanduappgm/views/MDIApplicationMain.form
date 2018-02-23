@@ -59,14 +59,17 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="minutosFechaMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
+            <MenuItem class="javax.swing.JMenuItem" name="minutosPagarFlotaMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Minutos Pagados x Flota"/>
+                <Property name="text" type="java.lang.String" value="Resumen Minutos x Flota"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="minutosPagarFlotaMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem10">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Minutos Recibidos x Flota"/>
+                <Property name="text" type="java.lang.String" value="Resumen Minutos Recibidos x Flota"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem11">
