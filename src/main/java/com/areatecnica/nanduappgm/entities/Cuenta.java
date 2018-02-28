@@ -62,9 +62,6 @@ public class Cuenta implements Serializable {
     @Column(name = "cuenta_fecha_ingreso")
     @Temporal(TemporalType.TIMESTAMP)
     private Date cuentaFechaIngreso;
-    @Column(name = "last_update")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastUpdate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadNegocioIdCuenta")
     private List<UnidadNegocio> unidadNegocioList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cajaCompensacionIdCuenta")
@@ -141,15 +138,7 @@ public class Cuenta implements Serializable {
     public void setCuentaFechaIngreso(Date cuentaFechaIngreso) {
         this.cuentaFechaIngreso = cuentaFechaIngreso;
     }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
+    
     @XmlTransient
     public List<UnidadNegocio> getUnidadNegocioList() {
         return unidadNegocioList;

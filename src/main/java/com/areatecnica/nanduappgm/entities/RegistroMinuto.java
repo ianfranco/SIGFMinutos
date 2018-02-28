@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "RegistroMinuto.findByRegistroMinutoMonto", query = "SELECT r FROM RegistroMinuto r WHERE r.registroMinutoMonto = :registroMinutoMonto")
     , @NamedQuery(name = "RegistroMinuto.findByRegistroMinutoFechaIngreso", query = "SELECT r FROM RegistroMinuto r WHERE r.registroMinutoFechaIngreso = :registroMinutoFechaIngreso")
     , @NamedQuery(name = "RegistroMinuto.findByRegistroMinutoRecaudado", query = "SELECT r FROM RegistroMinuto r WHERE r.registroMinutoRecaudado = :registroMinutoRecaudado")
-    , @NamedQuery(name = "RegistroMinuto.findByLastUpdate", query = "SELECT r FROM RegistroMinuto r WHERE r.lastUpdate = :lastUpdate")})
+    })
 public class RegistroMinuto implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -62,9 +62,6 @@ public class RegistroMinuto implements Serializable {
     @Basic(optional = false)
     @Column(name = "registro_minuto_recaudado")
     private boolean registroMinutoRecaudado;
-    @Column(name = "last_update")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastUpdate;
     @JoinColumn(name = "registro_minuto_desde_id_bus", referencedColumnName = "bus_id")
     @ManyToOne(optional = false)
     private Bus registroMinutoDesdeIdBus;
@@ -133,14 +130,6 @@ public class RegistroMinuto implements Serializable {
 
     public void setRegistroMinutoRecaudado(boolean registroMinutoRecaudado) {
         this.registroMinutoRecaudado = registroMinutoRecaudado;
-    }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
     }
 
     public Bus getRegistroMinutoDesdeIdBus() {

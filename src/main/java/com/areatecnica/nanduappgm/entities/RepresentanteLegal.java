@@ -42,7 +42,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "RepresentanteLegal.findByRepresentanteLegalTelefono", query = "SELECT r FROM RepresentanteLegal r WHERE r.representanteLegalTelefono = :representanteLegalTelefono")
     , @NamedQuery(name = "RepresentanteLegal.findByRepresentanteLegalEmail", query = "SELECT r FROM RepresentanteLegal r WHERE r.representanteLegalEmail = :representanteLegalEmail")
     , @NamedQuery(name = "RepresentanteLegal.findByRepresentanteLegalFechaIngreso", query = "SELECT r FROM RepresentanteLegal r WHERE r.representanteLegalFechaIngreso = :representanteLegalFechaIngreso")
-    , @NamedQuery(name = "RepresentanteLegal.findByLastUpdate", query = "SELECT r FROM RepresentanteLegal r WHERE r.lastUpdate = :lastUpdate")})
+    })
 public class RepresentanteLegal implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -67,9 +67,6 @@ public class RepresentanteLegal implements Serializable {
     @Column(name = "representante_legal_fecha_ingreso")
     @Temporal(TemporalType.TIMESTAMP)
     private Date representanteLegalFechaIngreso;
-    @Column(name = "last_update")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastUpdate;
     @JoinColumn(name = "representante_legal_id_cuenta", referencedColumnName = "cuenta_id")
     @ManyToOne(optional = false)
     private Cuenta representanteLegalIdCuenta;
@@ -144,14 +141,6 @@ public class RepresentanteLegal implements Serializable {
 
     public void setRepresentanteLegalFechaIngreso(Date representanteLegalFechaIngreso) {
         this.representanteLegalFechaIngreso = representanteLegalFechaIngreso;
-    }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
     }
 
     public Cuenta getRepresentanteLegalIdCuenta() {

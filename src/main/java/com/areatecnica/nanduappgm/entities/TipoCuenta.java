@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "TipoCuenta.findByTipoCuentaNombre", query = "SELECT t FROM TipoCuenta t WHERE t.tipoCuentaNombre = :tipoCuentaNombre")
     , @NamedQuery(name = "TipoCuenta.findByTipoCuentaActiva", query = "SELECT t FROM TipoCuenta t WHERE t.tipoCuentaActiva = :tipoCuentaActiva")
     , @NamedQuery(name = "TipoCuenta.findByTipoCuentaFechaIngreso", query = "SELECT t FROM TipoCuenta t WHERE t.tipoCuentaFechaIngreso = :tipoCuentaFechaIngreso")
-    , @NamedQuery(name = "TipoCuenta.findByLastUpdate", query = "SELECT t FROM TipoCuenta t WHERE t.lastUpdate = :lastUpdate")})
+    })
 public class TipoCuenta implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,9 +56,6 @@ public class TipoCuenta implements Serializable {
     @Column(name = "tipo_cuenta_fecha_ingreso")
     @Temporal(TemporalType.TIMESTAMP)
     private Date tipoCuentaFechaIngreso;
-    @Column(name = "last_update")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastUpdate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaIdTipo")
     private List<Cuenta> cuentaList;
 
@@ -106,14 +103,6 @@ public class TipoCuenta implements Serializable {
 
     public void setTipoCuentaFechaIngreso(Date tipoCuentaFechaIngreso) {
         this.tipoCuentaFechaIngreso = tipoCuentaFechaIngreso;
-    }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
     }
 
     @XmlTransient

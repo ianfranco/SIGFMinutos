@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "MarcaBus.findByMarcaBusId", query = "SELECT m FROM MarcaBus m WHERE m.marcaBusId = :marcaBusId")
     , @NamedQuery(name = "MarcaBus.findByMarcaBusNombre", query = "SELECT m FROM MarcaBus m WHERE m.marcaBusNombre = :marcaBusNombre")
     , @NamedQuery(name = "MarcaBus.findByMarcaBusFechaIngreso", query = "SELECT m FROM MarcaBus m WHERE m.marcaBusFechaIngreso = :marcaBusFechaIngreso")
-    , @NamedQuery(name = "MarcaBus.findByLastUpdate", query = "SELECT m FROM MarcaBus m WHERE m.lastUpdate = :lastUpdate")})
+    })
 public class MarcaBus implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,9 +52,6 @@ public class MarcaBus implements Serializable {
     @Column(name = "marca_bus_fecha_ingreso")
     @Temporal(TemporalType.TIMESTAMP)
     private Date marcaBusFechaIngreso;
-    @Column(name = "last_update")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastUpdate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "modeloMarcaBusIdMarca")
     private List<ModeloMarcaBus> modeloMarcaBusList;
 
@@ -94,15 +91,7 @@ public class MarcaBus implements Serializable {
     public void setMarcaBusFechaIngreso(Date marcaBusFechaIngreso) {
         this.marcaBusFechaIngreso = marcaBusFechaIngreso;
     }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
+    
     @XmlTransient
     public List<ModeloMarcaBus> getModeloMarcaBusList() {
         return modeloMarcaBusList;

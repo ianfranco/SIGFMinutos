@@ -41,7 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "ProcesoRecaudacion.findByProcesoRecaudacionTieneEgresos", query = "SELECT p FROM ProcesoRecaudacion p WHERE p.procesoRecaudacionTieneEgresos = :procesoRecaudacionTieneEgresos")
     , @NamedQuery(name = "ProcesoRecaudacion.findByProcesoRecaudacionActivo", query = "SELECT p FROM ProcesoRecaudacion p WHERE p.procesoRecaudacionActivo = :procesoRecaudacionActivo")
     , @NamedQuery(name = "ProcesoRecaudacion.findByProcesoRecaudacionFechaIngreso", query = "SELECT p FROM ProcesoRecaudacion p WHERE p.procesoRecaudacionFechaIngreso = :procesoRecaudacionFechaIngreso")
-    , @NamedQuery(name = "ProcesoRecaudacion.findByLastUpdate", query = "SELECT p FROM ProcesoRecaudacion p WHERE p.lastUpdate = :lastUpdate")})
+    })
 public class ProcesoRecaudacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -64,9 +64,6 @@ public class ProcesoRecaudacion implements Serializable {
     @Column(name = "proceso_recaudacion_fecha_ingreso")
     @Temporal(TemporalType.TIMESTAMP)
     private Date procesoRecaudacionFechaIngreso;
-    @Column(name = "last_update")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastUpdate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "busIdProcesoRecaudacion")
     private List<Bus> busList;
     @JoinColumn(name = "proceso_recaudacion_id_cuenta", referencedColumnName = "cuenta_id")
@@ -133,14 +130,6 @@ public class ProcesoRecaudacion implements Serializable {
 
     public void setProcesoRecaudacionFechaIngreso(Date procesoRecaudacionFechaIngreso) {
         this.procesoRecaudacionFechaIngreso = procesoRecaudacionFechaIngreso;
-    }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
     }
 
     @XmlTransient

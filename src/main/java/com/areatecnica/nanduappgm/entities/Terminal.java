@@ -44,7 +44,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Terminal.findByTerminalUbicacionLongitud", query = "SELECT t FROM Terminal t WHERE t.terminalUbicacionLongitud = :terminalUbicacionLongitud")
     , @NamedQuery(name = "Terminal.findByTerminalUbicacionLatitud", query = "SELECT t FROM Terminal t WHERE t.terminalUbicacionLatitud = :terminalUbicacionLatitud")
     , @NamedQuery(name = "Terminal.findByTerminalFechaIngreso", query = "SELECT t FROM Terminal t WHERE t.terminalFechaIngreso = :terminalFechaIngreso")
-    , @NamedQuery(name = "Terminal.findByLastUpdate", query = "SELECT t FROM Terminal t WHERE t.lastUpdate = :lastUpdate")})
+    })
 public class Terminal implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -73,9 +73,6 @@ public class Terminal implements Serializable {
     @Column(name = "terminal_fecha_ingreso")
     @Temporal(TemporalType.TIMESTAMP)
     private Date terminalFechaIngreso;
-    @Column(name = "last_update")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastUpdate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "busIdTerminal")
     private List<Bus> busList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "grupoServicioIdTerminal")
@@ -170,14 +167,6 @@ public class Terminal implements Serializable {
 
     public void setTerminalFechaIngreso(Date terminalFechaIngreso) {
         this.terminalFechaIngreso = terminalFechaIngreso;
-    }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
     }
 
     @XmlTransient

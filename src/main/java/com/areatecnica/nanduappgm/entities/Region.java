@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Region.findByRegionId", query = "SELECT r FROM Region r WHERE r.regionId = :regionId")
     , @NamedQuery(name = "Region.findByRegionNumero", query = "SELECT r FROM Region r WHERE r.regionNumero = :regionNumero")
     , @NamedQuery(name = "Region.findByRegionNombre", query = "SELECT r FROM Region r WHERE r.regionNombre = :regionNombre")
-    , @NamedQuery(name = "Region.findByLastUpdate", query = "SELECT r FROM Region r WHERE r.lastUpdate = :lastUpdate")})
+    })
 public class Region implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,9 +51,6 @@ public class Region implements Serializable {
     @Basic(optional = false)
     @Column(name = "region_nombre")
     private String regionNombre;
-    @Column(name = "last_update")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastUpdate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadNegocioIdRegion")
     private List<UnidadNegocio> unidadNegocioList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ciudadIdRegion")
@@ -95,15 +92,7 @@ public class Region implements Serializable {
     public void setRegionNombre(String regionNombre) {
         this.regionNombre = regionNombre;
     }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
+    
     @XmlTransient
     public List<UnidadNegocio> getUnidadNegocioList() {
         return unidadNegocioList;

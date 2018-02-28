@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Ciudad.findAll", query = "SELECT c FROM Ciudad c")
     , @NamedQuery(name = "Ciudad.findByCiudadId", query = "SELECT c FROM Ciudad c WHERE c.ciudadId = :ciudadId")
     , @NamedQuery(name = "Ciudad.findByCiudadNombre", query = "SELECT c FROM Ciudad c WHERE c.ciudadNombre = :ciudadNombre")
-    , @NamedQuery(name = "Ciudad.findByLastUpdate", query = "SELECT c FROM Ciudad c WHERE c.lastUpdate = :lastUpdate")})
+    })
 public class Ciudad implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,9 +49,6 @@ public class Ciudad implements Serializable {
     @Basic(optional = false)
     @Column(name = "ciudad_nombre")
     private String ciudadNombre;
-    @Column(name = "last_update")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastUpdate;
     @JoinColumn(name = "ciudad_id_region", referencedColumnName = "region_id")
     @ManyToOne(optional = false)
     private Region ciudadIdRegion;
@@ -84,14 +81,6 @@ public class Ciudad implements Serializable {
 
     public void setCiudadNombre(String ciudadNombre) {
         this.ciudadNombre = ciudadNombre;
-    }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
     }
 
     public Region getCiudadIdRegion() {

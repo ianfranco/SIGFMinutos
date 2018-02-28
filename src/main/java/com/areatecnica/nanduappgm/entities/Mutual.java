@@ -62,9 +62,6 @@ public class Mutual implements Serializable {
     @Column(name = "mutual_fecha_ingreso")
     @Temporal(TemporalType.TIMESTAMP)
     private Date mutualFechaIngreso;
-    @Column(name = "last_update")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastUpdate;
     @JoinColumn(name = "mutual_id_cuenta", referencedColumnName = "cuenta_id")
     @ManyToOne(optional = false)
     private Cuenta mutualIdCuenta;
@@ -124,15 +121,7 @@ public class Mutual implements Serializable {
     public void setMutualFechaIngreso(Date mutualFechaIngreso) {
         this.mutualFechaIngreso = mutualFechaIngreso;
     }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
+    
     public Cuenta getMutualIdCuenta() {
         return mutualIdCuenta;
     }

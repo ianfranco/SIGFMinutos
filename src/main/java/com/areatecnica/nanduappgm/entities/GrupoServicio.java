@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "GrupoServicio.findByGrupoServicioIdentificador", query = "SELECT g FROM GrupoServicio g WHERE g.grupoServicioIdentificador = :grupoServicioIdentificador")
     , @NamedQuery(name = "GrupoServicio.findByGrupoServicioAccesoInspector", query = "SELECT g FROM GrupoServicio g WHERE g.grupoServicioAccesoInspector = :grupoServicioAccesoInspector")
     , @NamedQuery(name = "GrupoServicio.findByGrupoServicioFechaIngreso", query = "SELECT g FROM GrupoServicio g WHERE g.grupoServicioFechaIngreso = :grupoServicioFechaIngreso")
-    , @NamedQuery(name = "GrupoServicio.findByLastUpdate", query = "SELECT g FROM GrupoServicio g WHERE g.lastUpdate = :lastUpdate")})
+    })
 public class GrupoServicio implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,9 +58,6 @@ public class GrupoServicio implements Serializable {
     @Column(name = "grupo_servicio_fecha_ingreso")
     @Temporal(TemporalType.TIMESTAMP)
     private Date grupoServicioFechaIngreso;
-    @Column(name = "last_update")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastUpdate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "busIdGrupoServicio")
     private List<Bus> busList;
     @JoinColumn(name = "grupo_servicio_id_cuenta", referencedColumnName = "cuenta_id")
@@ -114,14 +111,6 @@ public class GrupoServicio implements Serializable {
 
     public void setGrupoServicioFechaIngreso(Date grupoServicioFechaIngreso) {
         this.grupoServicioFechaIngreso = grupoServicioFechaIngreso;
-    }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
     }
 
     @XmlTransient

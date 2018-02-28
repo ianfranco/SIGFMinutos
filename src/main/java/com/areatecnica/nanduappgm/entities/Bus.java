@@ -53,7 +53,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Bus.findByBusComparteServicio", query = "SELECT b FROM Bus b WHERE b.busComparteServicio = :busComparteServicio")
     , @NamedQuery(name = "Bus.findByBusActivo", query = "SELECT b FROM Bus b WHERE b.busActivo = :busActivo")
     , @NamedQuery(name = "Bus.findByBusFechaIngreso", query = "SELECT b FROM Bus b WHERE b.busFechaIngreso = :busFechaIngreso")
-    , @NamedQuery(name = "Bus.findByLastUpdate", query = "SELECT b FROM Bus b WHERE b.lastUpdate = :lastUpdate")})
+    })
 public class Bus implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -95,9 +95,6 @@ public class Bus implements Serializable {
     @Column(name = "bus_fecha_ingreso")
     @Temporal(TemporalType.TIMESTAMP)
     private Date busFechaIngreso;
-    @Column(name = "last_update")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastUpdate;
     @JoinColumn(name = "bus_id_empresa", referencedColumnName = "empresa_id")
     @ManyToOne(optional = false)
     private Empresa busIdEmpresa;
@@ -259,14 +256,6 @@ public class Bus implements Serializable {
 
     public void setBusFechaIngreso(Date busFechaIngreso) {
         this.busFechaIngreso = busFechaIngreso;
-    }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
     }
 
     public Empresa getBusIdEmpresa() {

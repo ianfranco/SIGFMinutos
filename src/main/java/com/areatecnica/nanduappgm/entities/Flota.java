@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Flota.findByFlotaNombre", query = "SELECT f FROM Flota f WHERE f.flotaNombre = :flotaNombre")
     , @NamedQuery(name = "Flota.findByFlotaTieneEgresos", query = "SELECT f FROM Flota f WHERE f.flotaTieneEgresos = :flotaTieneEgresos")
     , @NamedQuery(name = "Flota.findByFlotaFechaIngreso", query = "SELECT f FROM Flota f WHERE f.flotaFechaIngreso = :flotaFechaIngreso")
-    , @NamedQuery(name = "Flota.findByLastUpdate", query = "SELECT f FROM Flota f WHERE f.lastUpdate = :lastUpdate")})
+    })
 public class Flota implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -57,9 +57,6 @@ public class Flota implements Serializable {
     @Column(name = "flota_fecha_ingreso")
     @Temporal(TemporalType.TIMESTAMP)
     private Date flotaFechaIngreso;
-    @Column(name = "last_update")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastUpdate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "busIdFlota")
     private List<Bus> busList;
     @JoinColumn(name = "flota_id_cuenta", referencedColumnName = "cuenta_id")
@@ -109,14 +106,6 @@ public class Flota implements Serializable {
 
     public void setFlotaFechaIngreso(Date flotaFechaIngreso) {
         this.flotaFechaIngreso = flotaFechaIngreso;
-    }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
     }
 
     @XmlTransient
