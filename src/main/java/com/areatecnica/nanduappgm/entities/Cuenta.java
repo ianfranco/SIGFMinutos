@@ -39,8 +39,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Cuenta.findByCuentaAdministrador", query = "SELECT c FROM Cuenta c WHERE c.cuentaAdministrador = :cuentaAdministrador")
     , @NamedQuery(name = "Cuenta.findByCuentaRut", query = "SELECT c FROM Cuenta c WHERE c.cuentaRut = :cuentaRut")
     , @NamedQuery(name = "Cuenta.findByCuentaActiva", query = "SELECT c FROM Cuenta c WHERE c.cuentaActiva = :cuentaActiva")
-    , @NamedQuery(name = "Cuenta.findByCuentaFechaIngreso", query = "SELECT c FROM Cuenta c WHERE c.cuentaFechaIngreso = :cuentaFechaIngreso")
-    , @NamedQuery(name = "Cuenta.findByLastUpdate", query = "SELECT c FROM Cuenta c WHERE c.lastUpdate = :lastUpdate")})
+    
+    })
 public class Cuenta implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,10 +58,7 @@ public class Cuenta implements Serializable {
     @Basic(optional = false)
     @Column(name = "cuenta_activa")
     private boolean cuentaActiva;
-    @Basic(optional = false)
-    @Column(name = "cuenta_fecha_ingreso")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date cuentaFechaIngreso;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadNegocioIdCuenta")
     private List<UnidadNegocio> unidadNegocioList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cajaCompensacionIdCuenta")
@@ -91,12 +88,11 @@ public class Cuenta implements Serializable {
         this.cuentaId = cuentaId;
     }
 
-    public Cuenta(Integer cuentaId, String cuentaAdministrador, String cuentaRut, boolean cuentaActiva, Date cuentaFechaIngreso) {
+    public Cuenta(Integer cuentaId, String cuentaAdministrador, String cuentaRut, boolean cuentaActiva) {
         this.cuentaId = cuentaId;
         this.cuentaAdministrador = cuentaAdministrador;
         this.cuentaRut = cuentaRut;
         this.cuentaActiva = cuentaActiva;
-        this.cuentaFechaIngreso = cuentaFechaIngreso;
     }
 
     public Integer getCuentaId() {
@@ -129,14 +125,6 @@ public class Cuenta implements Serializable {
 
     public void setCuentaActiva(boolean cuentaActiva) {
         this.cuentaActiva = cuentaActiva;
-    }
-
-    public Date getCuentaFechaIngreso() {
-        return cuentaFechaIngreso;
-    }
-
-    public void setCuentaFechaIngreso(Date cuentaFechaIngreso) {
-        this.cuentaFechaIngreso = cuentaFechaIngreso;
     }
     
     @XmlTransient

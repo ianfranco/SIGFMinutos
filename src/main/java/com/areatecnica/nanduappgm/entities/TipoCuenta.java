@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "TipoCuenta.findByTipoCuentaId", query = "SELECT t FROM TipoCuenta t WHERE t.tipoCuentaId = :tipoCuentaId")
     , @NamedQuery(name = "TipoCuenta.findByTipoCuentaNombre", query = "SELECT t FROM TipoCuenta t WHERE t.tipoCuentaNombre = :tipoCuentaNombre")
     , @NamedQuery(name = "TipoCuenta.findByTipoCuentaActiva", query = "SELECT t FROM TipoCuenta t WHERE t.tipoCuentaActiva = :tipoCuentaActiva")
-    , @NamedQuery(name = "TipoCuenta.findByTipoCuentaFechaIngreso", query = "SELECT t FROM TipoCuenta t WHERE t.tipoCuentaFechaIngreso = :tipoCuentaFechaIngreso")
+    
     })
 public class TipoCuenta implements Serializable {
 
@@ -52,10 +52,7 @@ public class TipoCuenta implements Serializable {
     @Basic(optional = false)
     @Column(name = "tipo_cuenta_activa")
     private boolean tipoCuentaActiva;
-    @Basic(optional = false)
-    @Column(name = "tipo_cuenta_fecha_ingreso")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date tipoCuentaFechaIngreso;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaIdTipo")
     private List<Cuenta> cuentaList;
 
@@ -66,11 +63,10 @@ public class TipoCuenta implements Serializable {
         this.tipoCuentaId = tipoCuentaId;
     }
 
-    public TipoCuenta(Integer tipoCuentaId, String tipoCuentaNombre, boolean tipoCuentaActiva, Date tipoCuentaFechaIngreso) {
+    public TipoCuenta(Integer tipoCuentaId, String tipoCuentaNombre, boolean tipoCuentaActiva) {
         this.tipoCuentaId = tipoCuentaId;
         this.tipoCuentaNombre = tipoCuentaNombre;
         this.tipoCuentaActiva = tipoCuentaActiva;
-        this.tipoCuentaFechaIngreso = tipoCuentaFechaIngreso;
     }
 
     public Integer getTipoCuentaId() {
@@ -95,14 +91,6 @@ public class TipoCuenta implements Serializable {
 
     public void setTipoCuentaActiva(boolean tipoCuentaActiva) {
         this.tipoCuentaActiva = tipoCuentaActiva;
-    }
-
-    public Date getTipoCuentaFechaIngreso() {
-        return tipoCuentaFechaIngreso;
-    }
-
-    public void setTipoCuentaFechaIngreso(Date tipoCuentaFechaIngreso) {
-        this.tipoCuentaFechaIngreso = tipoCuentaFechaIngreso;
     }
 
     @XmlTransient

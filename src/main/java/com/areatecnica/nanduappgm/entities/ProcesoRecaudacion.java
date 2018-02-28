@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "ProcesoRecaudacion.findByProcesoRecaudacionTieneCuenta", query = "SELECT p FROM ProcesoRecaudacion p WHERE p.procesoRecaudacionTieneCuenta = :procesoRecaudacionTieneCuenta")
     , @NamedQuery(name = "ProcesoRecaudacion.findByProcesoRecaudacionTieneEgresos", query = "SELECT p FROM ProcesoRecaudacion p WHERE p.procesoRecaudacionTieneEgresos = :procesoRecaudacionTieneEgresos")
     , @NamedQuery(name = "ProcesoRecaudacion.findByProcesoRecaudacionActivo", query = "SELECT p FROM ProcesoRecaudacion p WHERE p.procesoRecaudacionActivo = :procesoRecaudacionActivo")
-    , @NamedQuery(name = "ProcesoRecaudacion.findByProcesoRecaudacionFechaIngreso", query = "SELECT p FROM ProcesoRecaudacion p WHERE p.procesoRecaudacionFechaIngreso = :procesoRecaudacionFechaIngreso")
+    
     })
 public class ProcesoRecaudacion implements Serializable {
 
@@ -60,10 +60,6 @@ public class ProcesoRecaudacion implements Serializable {
     @Basic(optional = false)
     @Column(name = "proceso_recaudacion_activo")
     private boolean procesoRecaudacionActivo;
-    @Basic(optional = false)
-    @Column(name = "proceso_recaudacion_fecha_ingreso")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date procesoRecaudacionFechaIngreso;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "busIdProcesoRecaudacion")
     private List<Bus> busList;
     @JoinColumn(name = "proceso_recaudacion_id_cuenta", referencedColumnName = "cuenta_id")
@@ -77,11 +73,10 @@ public class ProcesoRecaudacion implements Serializable {
         this.procesoRecaudacionId = procesoRecaudacionId;
     }
 
-    public ProcesoRecaudacion(Integer procesoRecaudacionId, String procesoRecaudacionNombre, boolean procesoRecaudacionActivo, Date procesoRecaudacionFechaIngreso) {
+    public ProcesoRecaudacion(Integer procesoRecaudacionId, String procesoRecaudacionNombre, boolean procesoRecaudacionActivo) {
         this.procesoRecaudacionId = procesoRecaudacionId;
         this.procesoRecaudacionNombre = procesoRecaudacionNombre;
         this.procesoRecaudacionActivo = procesoRecaudacionActivo;
-        this.procesoRecaudacionFechaIngreso = procesoRecaudacionFechaIngreso;
     }
 
     public Integer getProcesoRecaudacionId() {
@@ -122,14 +117,6 @@ public class ProcesoRecaudacion implements Serializable {
 
     public void setProcesoRecaudacionActivo(boolean procesoRecaudacionActivo) {
         this.procesoRecaudacionActivo = procesoRecaudacionActivo;
-    }
-
-    public Date getProcesoRecaudacionFechaIngreso() {
-        return procesoRecaudacionFechaIngreso;
-    }
-
-    public void setProcesoRecaudacionFechaIngreso(Date procesoRecaudacionFechaIngreso) {
-        this.procesoRecaudacionFechaIngreso = procesoRecaudacionFechaIngreso;
     }
 
     @XmlTransient

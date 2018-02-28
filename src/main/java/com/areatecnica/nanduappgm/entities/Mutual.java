@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Mutual.findByMutualComision", query = "SELECT m FROM Mutual m WHERE m.mutualComision = :mutualComision")
     , @NamedQuery(name = "Mutual.findByMutualPorcentajeDescuento", query = "SELECT m FROM Mutual m WHERE m.mutualPorcentajeDescuento = :mutualPorcentajeDescuento")
     , @NamedQuery(name = "Mutual.findByMutualFechaIngreso", query = "SELECT m FROM Mutual m WHERE m.mutualFechaIngreso = :mutualFechaIngreso")
-    , @NamedQuery(name = "Mutual.findByLastUpdate", query = "SELECT m FROM Mutual m WHERE m.lastUpdate = :lastUpdate")})
+    })
 public class Mutual implements Serializable {
 
     private static final long serialVersionUID = 1L;
