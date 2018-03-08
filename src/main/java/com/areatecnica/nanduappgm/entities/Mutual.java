@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Mutual.findByMutualNombre", query = "SELECT m FROM Mutual m WHERE m.mutualNombre = :mutualNombre")
     , @NamedQuery(name = "Mutual.findByMutualComision", query = "SELECT m FROM Mutual m WHERE m.mutualComision = :mutualComision")
     , @NamedQuery(name = "Mutual.findByMutualPorcentajeDescuento", query = "SELECT m FROM Mutual m WHERE m.mutualPorcentajeDescuento = :mutualPorcentajeDescuento")
-    , @NamedQuery(name = "Mutual.findByMutualFechaIngreso", query = "SELECT m FROM Mutual m WHERE m.mutualFechaIngreso = :mutualFechaIngreso")
+    
     })
 public class Mutual implements Serializable {
 
@@ -58,10 +58,6 @@ public class Mutual implements Serializable {
     @Basic(optional = false)
     @Column(name = "mutual_porcentaje_descuento")
     private float mutualPorcentajeDescuento;
-    @Basic(optional = false)
-    @Column(name = "mutual_fecha_ingreso")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date mutualFechaIngreso;
     @JoinColumn(name = "mutual_id_cuenta", referencedColumnName = "cuenta_id")
     @ManyToOne(optional = false)
     private Cuenta mutualIdCuenta;
@@ -79,7 +75,6 @@ public class Mutual implements Serializable {
         this.mutualId = mutualId;
         this.mutualNombre = mutualNombre;
         this.mutualPorcentajeDescuento = mutualPorcentajeDescuento;
-        this.mutualFechaIngreso = mutualFechaIngreso;
     }
 
     public Integer getMutualId() {
@@ -114,14 +109,6 @@ public class Mutual implements Serializable {
         this.mutualPorcentajeDescuento = mutualPorcentajeDescuento;
     }
 
-    public Date getMutualFechaIngreso() {
-        return mutualFechaIngreso;
-    }
-
-    public void setMutualFechaIngreso(Date mutualFechaIngreso) {
-        this.mutualFechaIngreso = mutualFechaIngreso;
-    }
-    
     public Cuenta getMutualIdCuenta() {
         return mutualIdCuenta;
     }

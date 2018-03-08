@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Comuna.findAll", query = "SELECT c FROM Comuna c")
     , @NamedQuery(name = "Comuna.findByComunaId", query = "SELECT c FROM Comuna c WHERE c.comunaId = :comunaId")
     , @NamedQuery(name = "Comuna.findByComunaNombre", query = "SELECT c FROM Comuna c WHERE c.comunaNombre = :comunaNombre")
-    , @NamedQuery(name = "Comuna.findByComunaFechaIngreso", query = "SELECT c FROM Comuna c WHERE c.comunaFechaIngreso = :comunaFechaIngreso")})
+    })
 public class Comuna implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,10 +49,6 @@ public class Comuna implements Serializable {
     @Basic(optional = false)
     @Column(name = "comuna_nombre")
     private String comunaNombre;
-    @Basic(optional = false)
-    @Column(name = "comuna_fecha_ingreso")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date comunaFechaIngreso;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "terminalIdComuna")
     private List<Terminal> terminalList;
     @JoinColumn(name = "comuna_id_ciudad", referencedColumnName = "ciudad_id")
@@ -66,10 +62,9 @@ public class Comuna implements Serializable {
         this.comunaId = comunaId;
     }
 
-    public Comuna(Integer comunaId, String comunaNombre, Date comunaFechaIngreso) {
+    public Comuna(Integer comunaId, String comunaNombre) {
         this.comunaId = comunaId;
         this.comunaNombre = comunaNombre;
-        this.comunaFechaIngreso = comunaFechaIngreso;
     }
 
     public Integer getComunaId() {
@@ -86,14 +81,6 @@ public class Comuna implements Serializable {
 
     public void setComunaNombre(String comunaNombre) {
         this.comunaNombre = comunaNombre;
-    }
-
-    public Date getComunaFechaIngreso() {
-        return comunaFechaIngreso;
-    }
-
-    public void setComunaFechaIngreso(Date comunaFechaIngreso) {
-        this.comunaFechaIngreso = comunaFechaIngreso;
     }
 
     @XmlTransient

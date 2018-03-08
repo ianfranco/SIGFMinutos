@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Flota.findByFlotaId", query = "SELECT f FROM Flota f WHERE f.flotaId = :flotaId")
     , @NamedQuery(name = "Flota.findByFlotaNombre", query = "SELECT f FROM Flota f WHERE f.flotaNombre = :flotaNombre")
     , @NamedQuery(name = "Flota.findByFlotaTieneEgresos", query = "SELECT f FROM Flota f WHERE f.flotaTieneEgresos = :flotaTieneEgresos")
-    , @NamedQuery(name = "Flota.findByFlotaFechaIngreso", query = "SELECT f FROM Flota f WHERE f.flotaFechaIngreso = :flotaFechaIngreso")
+    
     })
 public class Flota implements Serializable {
 
@@ -53,10 +53,6 @@ public class Flota implements Serializable {
     private String flotaNombre;
     @Column(name = "flota_tiene_egresos")
     private Boolean flotaTieneEgresos;
-    @Basic(optional = false)
-    @Column(name = "flota_fecha_ingreso")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date flotaFechaIngreso;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "busIdFlota")
     private List<Bus> busList;
     @JoinColumn(name = "flota_id_cuenta", referencedColumnName = "cuenta_id")
@@ -70,10 +66,9 @@ public class Flota implements Serializable {
         this.flotaId = flotaId;
     }
 
-    public Flota(Integer flotaId, String flotaNombre, Date flotaFechaIngreso) {
+    public Flota(Integer flotaId, String flotaNombre) {
         this.flotaId = flotaId;
         this.flotaNombre = flotaNombre;
-        this.flotaFechaIngreso = flotaFechaIngreso;
     }
 
     public Integer getFlotaId() {
@@ -98,14 +93,6 @@ public class Flota implements Serializable {
 
     public void setFlotaTieneEgresos(Boolean flotaTieneEgresos) {
         this.flotaTieneEgresos = flotaTieneEgresos;
-    }
-
-    public Date getFlotaFechaIngreso() {
-        return flotaFechaIngreso;
-    }
-
-    public void setFlotaFechaIngreso(Date flotaFechaIngreso) {
-        this.flotaFechaIngreso = flotaFechaIngreso;
     }
 
     @XmlTransient

@@ -41,7 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "RepresentanteLegal.findByRepresentanteLegalDireccion", query = "SELECT r FROM RepresentanteLegal r WHERE r.representanteLegalDireccion = :representanteLegalDireccion")
     , @NamedQuery(name = "RepresentanteLegal.findByRepresentanteLegalTelefono", query = "SELECT r FROM RepresentanteLegal r WHERE r.representanteLegalTelefono = :representanteLegalTelefono")
     , @NamedQuery(name = "RepresentanteLegal.findByRepresentanteLegalEmail", query = "SELECT r FROM RepresentanteLegal r WHERE r.representanteLegalEmail = :representanteLegalEmail")
-    , @NamedQuery(name = "RepresentanteLegal.findByRepresentanteLegalFechaIngreso", query = "SELECT r FROM RepresentanteLegal r WHERE r.representanteLegalFechaIngreso = :representanteLegalFechaIngreso")
+    
     })
 public class RepresentanteLegal implements Serializable {
 
@@ -63,10 +63,6 @@ public class RepresentanteLegal implements Serializable {
     private String representanteLegalTelefono;
     @Column(name = "representante_legal_email")
     private String representanteLegalEmail;
-    @Basic(optional = false)
-    @Column(name = "representante_legal_fecha_ingreso")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date representanteLegalFechaIngreso;
     @JoinColumn(name = "representante_legal_id_cuenta", referencedColumnName = "cuenta_id")
     @ManyToOne(optional = false)
     private Cuenta representanteLegalIdCuenta;
@@ -80,11 +76,10 @@ public class RepresentanteLegal implements Serializable {
         this.representanteLegalId = representanteLegalId;
     }
 
-    public RepresentanteLegal(Integer representanteLegalId, String representanteLegalNombre, String representanteLegalRut, Date representanteLegalFechaIngreso) {
+    public RepresentanteLegal(Integer representanteLegalId, String representanteLegalNombre, String representanteLegalRut) {
         this.representanteLegalId = representanteLegalId;
         this.representanteLegalNombre = representanteLegalNombre;
         this.representanteLegalRut = representanteLegalRut;
-        this.representanteLegalFechaIngreso = representanteLegalFechaIngreso;
     }
 
     public Integer getRepresentanteLegalId() {
@@ -134,15 +129,7 @@ public class RepresentanteLegal implements Serializable {
     public void setRepresentanteLegalEmail(String representanteLegalEmail) {
         this.representanteLegalEmail = representanteLegalEmail;
     }
-
-    public Date getRepresentanteLegalFechaIngreso() {
-        return representanteLegalFechaIngreso;
-    }
-
-    public void setRepresentanteLegalFechaIngreso(Date representanteLegalFechaIngreso) {
-        this.representanteLegalFechaIngreso = representanteLegalFechaIngreso;
-    }
-
+    
     public Cuenta getRepresentanteLegalIdCuenta() {
         return representanteLegalIdCuenta;
     }

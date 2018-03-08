@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "GrupoServicio.findByGrupoServicioId", query = "SELECT g FROM GrupoServicio g WHERE g.grupoServicioId = :grupoServicioId")
     , @NamedQuery(name = "GrupoServicio.findByGrupoServicioIdentificador", query = "SELECT g FROM GrupoServicio g WHERE g.grupoServicioIdentificador = :grupoServicioIdentificador")
     , @NamedQuery(name = "GrupoServicio.findByGrupoServicioAccesoInspector", query = "SELECT g FROM GrupoServicio g WHERE g.grupoServicioAccesoInspector = :grupoServicioAccesoInspector")
-    , @NamedQuery(name = "GrupoServicio.findByGrupoServicioFechaIngreso", query = "SELECT g FROM GrupoServicio g WHERE g.grupoServicioFechaIngreso = :grupoServicioFechaIngreso")
+    
     })
 public class GrupoServicio implements Serializable {
 
@@ -54,10 +54,6 @@ public class GrupoServicio implements Serializable {
     @Basic(optional = false)
     @Column(name = "grupo_servicio_acceso_inspector")
     private boolean grupoServicioAccesoInspector;
-    @Basic(optional = false)
-    @Column(name = "grupo_servicio_fecha_ingreso")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date grupoServicioFechaIngreso;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "busIdGrupoServicio")
     private List<Bus> busList;
     @JoinColumn(name = "grupo_servicio_id_cuenta", referencedColumnName = "cuenta_id")
@@ -74,11 +70,10 @@ public class GrupoServicio implements Serializable {
         this.grupoServicioId = grupoServicioId;
     }
 
-    public GrupoServicio(Integer grupoServicioId, String grupoServicioIdentificador, boolean grupoServicioAccesoInspector, Date grupoServicioFechaIngreso) {
+    public GrupoServicio(Integer grupoServicioId, String grupoServicioIdentificador, boolean grupoServicioAccesoInspector) {
         this.grupoServicioId = grupoServicioId;
         this.grupoServicioIdentificador = grupoServicioIdentificador;
         this.grupoServicioAccesoInspector = grupoServicioAccesoInspector;
-        this.grupoServicioFechaIngreso = grupoServicioFechaIngreso;
     }
 
     public Integer getGrupoServicioId() {
@@ -103,14 +98,6 @@ public class GrupoServicio implements Serializable {
 
     public void setGrupoServicioAccesoInspector(boolean grupoServicioAccesoInspector) {
         this.grupoServicioAccesoInspector = grupoServicioAccesoInspector;
-    }
-
-    public Date getGrupoServicioFechaIngreso() {
-        return grupoServicioFechaIngreso;
-    }
-
-    public void setGrupoServicioFechaIngreso(Date grupoServicioFechaIngreso) {
-        this.grupoServicioFechaIngreso = grupoServicioFechaIngreso;
     }
 
     @XmlTransient

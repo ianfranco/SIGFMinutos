@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Terminal.findByTerminalEmail", query = "SELECT t FROM Terminal t WHERE t.terminalEmail = :terminalEmail")
     , @NamedQuery(name = "Terminal.findByTerminalUbicacionLongitud", query = "SELECT t FROM Terminal t WHERE t.terminalUbicacionLongitud = :terminalUbicacionLongitud")
     , @NamedQuery(name = "Terminal.findByTerminalUbicacionLatitud", query = "SELECT t FROM Terminal t WHERE t.terminalUbicacionLatitud = :terminalUbicacionLatitud")
-    , @NamedQuery(name = "Terminal.findByTerminalFechaIngreso", query = "SELECT t FROM Terminal t WHERE t.terminalFechaIngreso = :terminalFechaIngreso")
+    
     })
 public class Terminal implements Serializable {
 
@@ -70,9 +70,6 @@ public class Terminal implements Serializable {
     private Double terminalUbicacionLongitud;
     @Column(name = "terminal_ubicacion_latitud")
     private Double terminalUbicacionLatitud;
-    @Column(name = "terminal_fecha_ingreso")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date terminalFechaIngreso;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "busIdTerminal")
     private List<Bus> busList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "grupoServicioIdTerminal")
@@ -159,14 +156,6 @@ public class Terminal implements Serializable {
 
     public void setTerminalUbicacionLatitud(Double terminalUbicacionLatitud) {
         this.terminalUbicacionLatitud = terminalUbicacionLatitud;
-    }
-
-    public Date getTerminalFechaIngreso() {
-        return terminalFechaIngreso;
-    }
-
-    public void setTerminalFechaIngreso(Date terminalFechaIngreso) {
-        this.terminalFechaIngreso = terminalFechaIngreso;
     }
 
     @XmlTransient

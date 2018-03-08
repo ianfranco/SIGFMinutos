@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "EstadoBus.findAll", query = "SELECT e FROM EstadoBus e")
     , @NamedQuery(name = "EstadoBus.findByEstadoBusId", query = "SELECT e FROM EstadoBus e WHERE e.estadoBusId = :estadoBusId")
     , @NamedQuery(name = "EstadoBus.findByEstadoBusNombre", query = "SELECT e FROM EstadoBus e WHERE e.estadoBusNombre = :estadoBusNombre")
-    , @NamedQuery(name = "EstadoBus.findByEstadoBusFechaIngreso", query = "SELECT e FROM EstadoBus e WHERE e.estadoBusFechaIngreso = :estadoBusFechaIngreso")
+    
     })
 public class EstadoBus implements Serializable {
 
@@ -48,10 +48,6 @@ public class EstadoBus implements Serializable {
     @Basic(optional = false)
     @Column(name = "estado_bus_nombre")
     private String estadoBusNombre;
-    @Basic(optional = false)
-    @Column(name = "estado_bus_fecha_ingreso")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date estadoBusFechaIngreso;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "busIdEstadoBus")
     private List<Bus> busList;
 
@@ -65,7 +61,6 @@ public class EstadoBus implements Serializable {
     public EstadoBus(Integer estadoBusId, String estadoBusNombre, Date estadoBusFechaIngreso) {
         this.estadoBusId = estadoBusId;
         this.estadoBusNombre = estadoBusNombre;
-        this.estadoBusFechaIngreso = estadoBusFechaIngreso;
     }
 
     public Integer getEstadoBusId() {
@@ -83,15 +78,7 @@ public class EstadoBus implements Serializable {
     public void setEstadoBusNombre(String estadoBusNombre) {
         this.estadoBusNombre = estadoBusNombre;
     }
-
-    public Date getEstadoBusFechaIngreso() {
-        return estadoBusFechaIngreso;
-    }
-
-    public void setEstadoBusFechaIngreso(Date estadoBusFechaIngreso) {
-        this.estadoBusFechaIngreso = estadoBusFechaIngreso;
-    }
-
+    
     @XmlTransient
     public List<Bus> getBusList() {
         return busList;

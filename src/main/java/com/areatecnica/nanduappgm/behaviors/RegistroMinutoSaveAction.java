@@ -12,7 +12,6 @@ import com.areatecnica.nanduappgm.entities.RegistroMinuto;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.util.Date;
-import javax.swing.AbstractAction;
 
 /**
  *

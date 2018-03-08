@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "ModeloMarcaBus.findAll", query = "SELECT m FROM ModeloMarcaBus m")
     , @NamedQuery(name = "ModeloMarcaBus.findByModeloMarcaBusId", query = "SELECT m FROM ModeloMarcaBus m WHERE m.modeloMarcaBusId = :modeloMarcaBusId")
     , @NamedQuery(name = "ModeloMarcaBus.findByModeloMarcaBusNombre", query = "SELECT m FROM ModeloMarcaBus m WHERE m.modeloMarcaBusNombre = :modeloMarcaBusNombre")
-    , @NamedQuery(name = "ModeloMarcaBus.findByModeloMarcaBusFechaIngreso", query = "SELECT m FROM ModeloMarcaBus m WHERE m.modeloMarcaBusFechaIngreso = :modeloMarcaBusFechaIngreso")})
+    })
 public class ModeloMarcaBus implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,10 +49,6 @@ public class ModeloMarcaBus implements Serializable {
     @Basic(optional = false)
     @Column(name = "modelo_marca_bus_nombre")
     private String modeloMarcaBusNombre;
-    @Basic(optional = false)
-    @Column(name = "modelo_marca_bus_fecha_ingreso")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modeloMarcaBusFechaIngreso;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "busIdModelo")
     private List<Bus> busList;
     @JoinColumn(name = "modelo_marca_bus_id_marca", referencedColumnName = "marca_bus_id")
@@ -66,10 +62,9 @@ public class ModeloMarcaBus implements Serializable {
         this.modeloMarcaBusId = modeloMarcaBusId;
     }
 
-    public ModeloMarcaBus(Integer modeloMarcaBusId, String modeloMarcaBusNombre, Date modeloMarcaBusFechaIngreso) {
+    public ModeloMarcaBus(Integer modeloMarcaBusId, String modeloMarcaBusNombre) {
         this.modeloMarcaBusId = modeloMarcaBusId;
         this.modeloMarcaBusNombre = modeloMarcaBusNombre;
-        this.modeloMarcaBusFechaIngreso = modeloMarcaBusFechaIngreso;
     }
 
     public Integer getModeloMarcaBusId() {
@@ -86,14 +81,6 @@ public class ModeloMarcaBus implements Serializable {
 
     public void setModeloMarcaBusNombre(String modeloMarcaBusNombre) {
         this.modeloMarcaBusNombre = modeloMarcaBusNombre;
-    }
-
-    public Date getModeloMarcaBusFechaIngreso() {
-        return modeloMarcaBusFechaIngreso;
-    }
-
-    public void setModeloMarcaBusFechaIngreso(Date modeloMarcaBusFechaIngreso) {
-        this.modeloMarcaBusFechaIngreso = modeloMarcaBusFechaIngreso;
     }
 
     @XmlTransient
