@@ -10,6 +10,7 @@ import com.areatecnica.nanduappgm.controllers.InformeMinutosFechaController;
 import com.areatecnica.nanduappgm.controllers.InformeMinutosPagadosFlotaController;
 import com.areatecnica.nanduappgm.controllers.InformeMinutosPendientesPagarController;
 import com.areatecnica.nanduappgm.controllers.RegistroMinutoController;
+import com.areatecnica.nanduappgm.helpers.ButtonTabComponent;
 import com.areatecnica.nanduappgm.helpers.SystemTrayIcon;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -214,6 +215,7 @@ public class MDIApplicationMain extends javax.swing.JFrame {
     private void setNewTab(JPanel panel, String title) {
         this.tabbedPane.add(title, panel);
         this.tabbedPane.setSelectedComponent(panel);
+        this.tabbedPane.setTabComponentAt(this.tabbedPane.getSelectedIndex(), new ButtonTabComponent(this.tabbedPane));
     }
 
     /**

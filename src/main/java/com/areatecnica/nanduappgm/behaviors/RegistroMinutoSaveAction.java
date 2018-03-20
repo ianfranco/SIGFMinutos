@@ -34,21 +34,20 @@ public class RegistroMinutoSaveAction extends RegistroMinutoAbstractAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (this.getController().getRegistroMinuto() != null) {
-            
-            System.err.println("BUS DESDE:"+this.getController().getRegistroMinuto().getRegistroMinutoDesdeIdBus().getBusId());
-            System.err.println("BUS HASTA:"+this.getController().getRegistroMinuto().getRegistroMinutoHastaIdBus().getBusId());
-            
+
+            System.err.println("BUS DESDE:" + this.getController().getRegistroMinuto().getRegistroMinutoDesdeIdBus().getBusId());
+            System.err.println("BUS HASTA:" + this.getController().getRegistroMinuto().getRegistroMinutoHastaIdBus().getBusId());
+
             if (this.getController().getRegistroMinuto().getRegistroMinutoDesdeIdBus().getBusId() != this.getController().getRegistroMinuto().getRegistroMinutoHastaIdBus().getBusId()) {
                 if (this.getController().getRegistroMinuto().getRegistroMinutoMonto() > 0) {
-                    this.getController().getRegistroMinuto().setRegistroMinutoFechaIngreso(new Date());
                     this.dao.create(this.getController().getRegistroMinuto());
                     this.getController().getModel().add(this.getController().getRegistroMinuto());
                     this.getController().getView().getTable().setRowSelectionInterval(0, 0);
 
                     //this.getController().setRegistroMinuto(null);
-                    this.getController().setRegistroMinuto( new RegistroMinuto());
+                    this.getController().setRegistroMinuto(new RegistroMinuto());
                     this.getController().getRegistroMinuto().setRegistroMinutoFechaMinuto(this.getController().getFecha());
-                    
+
                     this.getController().resetRegistroMinuto();
                 } else {
                     this.getController().getView().getTotalTextField().setBackground(Color.YELLOW);

@@ -35,8 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "MarcaBus.findAll", query = "SELECT m FROM MarcaBus m")
     , @NamedQuery(name = "MarcaBus.findByMarcaBusId", query = "SELECT m FROM MarcaBus m WHERE m.marcaBusId = :marcaBusId")
     , @NamedQuery(name = "MarcaBus.findByMarcaBusNombre", query = "SELECT m FROM MarcaBus m WHERE m.marcaBusNombre = :marcaBusNombre")
-    , @NamedQuery(name = "MarcaBus.findByMarcaBusFechaIngreso", query = "SELECT m FROM MarcaBus m WHERE m.marcaBusFechaIngreso = :marcaBusFechaIngreso")
-    })
+
+})
 public class MarcaBus implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,10 +48,6 @@ public class MarcaBus implements Serializable {
     @Basic(optional = false)
     @Column(name = "marca_bus_nombre")
     private String marcaBusNombre;
-    @Basic(optional = false)
-    @Column(name = "marca_bus_fecha_ingreso")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date marcaBusFechaIngreso;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "modeloMarcaBusIdMarca")
     private List<ModeloMarcaBus> modeloMarcaBusList;
 
@@ -62,10 +58,9 @@ public class MarcaBus implements Serializable {
         this.marcaBusId = marcaBusId;
     }
 
-    public MarcaBus(Integer marcaBusId, String marcaBusNombre, Date marcaBusFechaIngreso) {
+    public MarcaBus(Integer marcaBusId, String marcaBusNombre) {
         this.marcaBusId = marcaBusId;
         this.marcaBusNombre = marcaBusNombre;
-        this.marcaBusFechaIngreso = marcaBusFechaIngreso;
     }
 
     public Integer getMarcaBusId() {
@@ -84,14 +79,6 @@ public class MarcaBus implements Serializable {
         this.marcaBusNombre = marcaBusNombre;
     }
 
-    public Date getMarcaBusFechaIngreso() {
-        return marcaBusFechaIngreso;
-    }
-
-    public void setMarcaBusFechaIngreso(Date marcaBusFechaIngreso) {
-        this.marcaBusFechaIngreso = marcaBusFechaIngreso;
-    }
-    
     @XmlTransient
     public List<ModeloMarcaBus> getModeloMarcaBusList() {
         return modeloMarcaBusList;
@@ -125,5 +112,5 @@ public class MarcaBus implements Serializable {
     public String toString() {
         return "com.areatecnica.nanduappgm.entities.MarcaBus[ marcaBusId=" + marcaBusId + " ]";
     }
-    
+
 }
