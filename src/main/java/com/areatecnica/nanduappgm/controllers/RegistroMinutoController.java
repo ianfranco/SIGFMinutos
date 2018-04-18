@@ -123,6 +123,7 @@ public class RegistroMinutoController {
     }
 
     private void findRegistroMinuto() {
+        System.err.println("REGISTRO MINUTO");
         this.fecha = this.view.getFechaRegistroMinuto().getDate();
         this.dao = new IRegistroMinutoDaoImpl();
         this.items = this.dao.findByDate(fecha);

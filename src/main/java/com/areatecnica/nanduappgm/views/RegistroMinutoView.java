@@ -110,7 +110,7 @@ public class RegistroMinutoView extends javax.swing.JPanel {
             panelRegistroMinutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRegistroMinutoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelRegistroMinutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteButton)
@@ -121,39 +121,43 @@ public class RegistroMinutoView extends javax.swing.JPanel {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Entrada"));
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Fecha:");
+        jLabel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         fechaRegistroMinuto.setDateFormatString("dd/MM/yyyy");
         fechaRegistroMinuto.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Nº Bus Paga:");
+        jLabel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        busPagaTextField.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        busPagaTextField.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         busPagaTextField.setEnabled(false);
 
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Nº Bus Recibe:");
+        jLabel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        busRecibeTextField.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        busRecibeTextField.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         busRecibeTextField.setEnabled(false);
 
-        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Total:");
+        jLabel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        totalTextField.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        totalTextField.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         totalTextField.setEnabled(false);
 
-        saveButton.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        saveButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         saveButton.setText("Ingresar");
         saveButton.setEnabled(false);
 
-        resetButton.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        resetButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         resetButton.setText("Reiniciar");
         resetButton.setEnabled(false);
 
@@ -167,29 +171,37 @@ public class RegistroMinutoView extends javax.swing.JPanel {
 
         findButton.setText("Buscar");
 
-        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel5.setText("PPU: ");
+        jLabel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        ppuPagaLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        ppuPagaLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         ppuPagaLabel.setText(" ");
+        ppuPagaLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel6.setText("PPU: ");
+        jLabel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        ppuRecibeLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        ppuRecibeLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         ppuRecibeLabel.setText(" ");
+        ppuRecibeLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel7.setText("Flota: ");
+        jLabel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel8.setText("Flota: ");
+        jLabel8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        nombreFlotaPagaLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        nombreFlotaPagaLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         nombreFlotaPagaLabel.setText(" ");
+        nombreFlotaPagaLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        nombreFlotaRecibeLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        nombreFlotaRecibeLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         nombreFlotaRecibeLabel.setText(" ");
+        nombreFlotaRecibeLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -246,12 +258,11 @@ public class RegistroMinutoView extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(findButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addComponent(fechaRegistroMinuto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(findButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(fechaRegistroMinuto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -278,7 +289,7 @@ public class RegistroMinutoView extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveButton)
                     .addComponent(resetButton))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
