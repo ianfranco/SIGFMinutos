@@ -19,7 +19,7 @@ public interface IRegistroMinutoDao<T> extends IGenericDAO<T> {
     
     public List<RegistroMinuto> findByDate(Date fecha);
     
-    public List<RegistroMinuto> findByBusPagaDate(Bus bus, Date fecha);
+    //public List<RegistroMinuto> findByBusPagaDate(Bus bus, Date from);
     
     public List<RegistroMinuto> findByBusSinRecaudar(Bus bus);
     
@@ -28,4 +28,6 @@ public interface IRegistroMinutoDao<T> extends IGenericDAO<T> {
     public List<RegistroMinuto> findBySinRecaudar();
     
     public List<RegistroMinuto> findByTerminalSinRecaudar(Terminal terminal);
+    
+    public List<RegistroMinuto> findByBusPagaDates(Bus bus, Date from, Date to);
 }

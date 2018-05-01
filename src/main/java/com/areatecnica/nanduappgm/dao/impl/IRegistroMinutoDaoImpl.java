@@ -25,8 +25,8 @@ public class IRegistroMinutoDaoImpl extends GenericDAOImpl<RegistroMinuto> imple
     }
 
     @Override
-    public List<RegistroMinuto> findByBusPagaDate(Bus bus, Date fecha) {
-        return this.entityManager.createNamedQuery("RegistroMinuto.findByRegistroMinutoDesdeIdBus").setParameter("registroMinutoDesdeIdBus", bus).setParameter("registroMinutoFechaMinuto", fecha).getResultList();
+    public List<RegistroMinuto> findByBusPagaDates(Bus bus, Date from, Date to) {
+        return this.entityManager.createNamedQuery("RegistroMinuto.findByRegistroMfindByRegfindByRegistroMinutoDesdeIdBus").setParameter("registroMinutoDesdeIdBus", bus).setParameter("registroMinutoFechaMinuto", from).setParameter("registroMinutoFechaMinuto", to).getResultList();
     }
 
     @Override
@@ -56,5 +56,6 @@ public class IRegistroMinutoDaoImpl extends GenericDAOImpl<RegistroMinuto> imple
             return null;
         }
     }
+
 
 }
